@@ -1,0 +1,137 @@
+body {
+  background: #e9ecef;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  align-items: center;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  margin: 0;
+  color: #212529;
+}
+
+.container {
+  max-width: 600px;
+  width: 90%;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.add-todo-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+input[type="text"] {
+  padding: 12px;
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 12px;
+  border: 1px solid #007bff;
+  background: transparent;
+  color: #007bff;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+button:hover {
+  background: #e9ecef; /* Задать цвет при наведении */
+}
+
+.todo-list {
+  width: 100%;
+  text-align: left;
+}
+
+.todo-item {
+  display: flex;
+  flex-direction: column; /* Вертикальное выравнивание элементов */
+  align-items: flex-start; /* Выравнивание по левому краю */
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px 0;
+  transition: background 0.3s;
+}
+
+.todo-item:hover {
+  background: #e9ecef;
+}
+
+.task-title {
+  font-weight: 500;
+  margin: 0; /* Удаляем отступы */
+}
+
+.created-at {
+  margin-top: 5px; /* Отступ сверху для даты создания */
+  color: #6c757d;
+  font-size: 12px;
+}
+
+.empty-message {
+  color: #868e96;
+  font-style: italic;
+}
+
+.status-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: block; /* Смена на блочный элемент для лучшего управления отступами */
+  margin: 5px 0; /* Отступ сверху и снизу */
+}
+
+.status-icon {
+  transition: opacity 0.3s; /* Плавное изменение прозрачности */
+}
+
+.status-icon.completed:hover,
+.status-icon.incomplete:hover {
+  opacity: 0.7; /* Затемнение при наведении */
+}
+
+.remove {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.remove-icon {
+  width: 20px;
+  height: 20px;
+  transition: opacity 0.3s; /* Плавное изменение прозрачности */
+}
+
+.remove-icon:hover {
+  opacity: 0.7; /* Затемнение при наведении */
+}
+.bottoms {
+  display: flex;
+  flex-direction: row;
+
+}

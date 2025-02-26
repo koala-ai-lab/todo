@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ToDo List</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>ToDo List</h1>
+      <form action="{% url 'add_todo' %}" method="POST" class="add-todo-form">
+        {% csrf_token %}
+        <input
+          type="text"
+          name="title"
+          required
+          placeholder="Введите новую задачу"
+        />
+        <button type="submit">Добавить задачу</button>
+      </form>
+      <div class="todo-list">
+        {% for i in todo %}
+        <div class="todo-item" id="todo-{{ i.id }}">
+          <p class="task-title">{{ i.title }}</p>
+          <form
+            action="{% url 'completed' i.id %}"
+            method="POST"
+            class="completed-form"
+          >
+            {% csrf_token %}
+            <button
+              type="submit"
+              class="status-button"
+              title="Сменить статус задачи"
+            >
+              <span
+                class="status-icon {% if i.is_completed %}completed{% else %}incomplete{% endif %}"
+              >
+                {% if i.is_completed %} ✅ {% else %} ❌ {% endif %}
+              </span>
+            </button>
+          </form>
+          <p class="created-at">Создано: <strong>{{ i.created_at }}</strong></p>
+          <div class="bottoms">
+            <form
+              action="{% url 'delete' i.id %}"
+              method="POST"
+              class="remove-form"
+            >
+              {% csrf_token %}
+              <button type="submit" class="remove" title="Удалить задачу">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/1345/1345823.png"
+                  alt="Корзина"
+                  class="remove-icon"
+                />
+              </button>
+            </form>
+            <a href="{% url 'edit' i.id %}" class="remove">
+              <img
+                src="https://cdn-icons-png.flaticon.com/512/4277/4277132.png"
+                alt="Редактировать"
+                class="remove-icon"
+              />
+            </a>
+          </div>
+        </div>
+        {% endfor %} {% if not todo %}
+        <p class="empty-message">Нет задач</p>
+        {% endif %}
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit ToDo</title>
+  </head>
+  <body>
+    <div class="container">
+      <form
+        action="{% url 'update' todo.id %}"
+        method="POST"
+        class="add-todo-form"
+      >
+        {% csrf_token %}
+        <input
+          value="{{ todo.title }}"
+          type="text"
+          name="title"
+          required
+          placeholder="Введите новое название"
+        />
+        <button type="submit">Обновить задачу</button>
+      </form>
+    </div>
+  </body>
+</html>
